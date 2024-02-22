@@ -1,0 +1,13 @@
+INSERT INTO expert_advice (`Nutritional_Advice`, `Exercise_Advice`, `Expert_Name`, `Health_Tips`,Advice_Id) VALUES
+('Eat a balanced diet with plenty of fruits and vegetables.', 'Engage in cardio exercises for at least 30 minutes a day.', 'Dr. Nutritionist', 'Stay hydrated throughout the day.','Ad001'),
+('Consume lean protein sources for muscle recovery.', 'Incorporate strength training for overall fitness.', 'Fitness Guru', 'Get enough sleep for muscle repair and recovery.','Ad002'),
+('Limit processed foods and sugar intake for better health.', 'Include flexibility exercises in your routine.', 'Wellness Expert', 'Manage stress through meditation and deep breathing.','Ad003'),
+('Focus on whole grains for sustained energy.', 'Try different types of physical activities to keep it interesting.', 'Health Coach', 'Take breaks from prolonged sitting for better posture.','Ad004'),
+('Ensure a variety of colorful foods for diverse nutrients.', 'Practice mindfulness during workouts for better mind-body connection.', 'Nutrition and Fitness Specialist', 'Laugh often for improved mood and well-being.','Ad005'),
+('Stay informed about nutritional trends and updates.', 'Include interval training for efficient calorie burning.', 'Nutrition and Fitness Educator', 'Find joy in simple pleasures for a happy life.','Ad012'),
+('Eat a balanced diet with plenty of fruits and vegetables.', 'Engage in regular aerobic exercises like walking or cycling.','Dr. Nutritionist', 'Get enough sleep and stay hydrated.','NUT001'),
+('Focus on lean proteins and whole grains for energy.', 'Incorporate strength training exercises into your routine.','Dr. Fitness', 'Avoid excessive stress and prioritize mental well-being.','FIT002' ),
+('Consume foods rich in antioxidants for overall health.', 'Include both cardiovascular and strength exercises.','Dr. Wellness', 'Practice mindfulness and relaxation techniques.', 'WEL003' ),
+('Follow a heart-healthy diet low in saturated fats.', 'Engage in regular cardiovascular exercises like jogging or swimming.', 'Dr. HeartCare','Monitor blood pressure and cholesterol levels regularly.', 'HRT004'),
+('Maintain a balanced diet with moderation in all food groups.', 'Combine aerobic exercises with flexibility training.','Dr. BalancedLiving', 'Stay socially connected and maintain a positive outlook.', 'BL005'),
+( "Fuel your body with carbohydrates before cardio sessions.", "Gradually increase the duration of cardio workouts for endurance.", 'Dr. EMILY', "Practice deep breathing for better cardiovascular health.",'CR001');  

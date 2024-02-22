@@ -1,0 +1,109 @@
+CREATE DATABASE health_tracker;
+
+CREATE TABLE users(
+    User_Id int NOT NULL AUTO_INCREMENT,
+    Name varchar(100) NOT NULL,
+    Username varchar(100) NOT NULL,
+    Password varchar(50) NOT NULL,
+    Email varchar(100) NOT NULL,
+    Gender varchar(15) NOT NULL,
+    Date_of_birth date NOT NULL,
+    Primary Key (User_Id) 
+);
+		 
+
+CREATE TABLE shares_experience( 
+    sender_id int, 
+    receiver_id int, 
+    comment_status varchar(10), 
+    message varchar(240), 
+    PRIMARY KEY (sender_id,receiver_id), 
+    FOREIGN KEY (sender_id) REFERENCES users(User_Id) ON DELETE CASCADE On UPDATE CASCADE,
+    FOREIGN KEY (receiver_id) REFERENCES users(User_Id) ON DELETE CASCADE On UPDATE CASCADE);
+
+CREATE TABLE health_profile(
+    H_record_Id int NOT NULL AUTO_INCREMENT,
+    height int NOT NULL,
+    date_of_record date NOT NULL,
+    weight int NOT NULL,
+    User_Id int NOT NULL, 	
+    Primary Key (H_record_Id),
+    FOREIGN Key (User_Id) REFERENCES users(User_Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE physical_health(
+    H_record_Id int NOT NULL AUTO_INCREMENT,
+    cholesterol int NOT NULL,
+    blood_pressure int NOT NULL,
+    Primary Key (H_record_Id),
+    FOREIGN Key (H_record_Id) REFERENCES health_profile(H_record_Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE mental_health(
+    H_record_Id int NOT NULL AUTO_INCREMENT,
+    stress_level varchar(20) NOT NULL,
+    anxiety_level varchar(20) NOT NULL,
+    Primary Key (H_record_Id),
+    FOREIGN Key (H_record_Id) REFERENCES health_profile(H_record_Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Workout_plan(
+    Workout_Id int NOT NULL AUTO_INCREMENT,
+    Workout_type varchar(30) NOT NULL,
+    intensity int NOT NULL,
+    Duration int NOT NULL,
+    Primary Key (Workout_Id)
+); 
+
+CREATE TABLE Activity_record(
+    A_Record_id int NOT NULL AUTO_INCREMENT,
+    Date_of_record date NOT NULL,
+    Activity_type varchar(30) NOT NULL,
+    Active_minutes int NOT NULL,
+    Calorie_Burned int NOT NULL,
+    duration int NOT NULL, 
+    Steps_taken int NOT NULL,
+    Workout_id int,
+    PRIMARY KEY(A_Record_id),
+    FOREIGN Key(Workout_id) REFERENCES Workout_plan(Workout_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Expert_Advice(
+    Advice_Id varchar(12) NOT NULL  ,
+    Nutritional_Advice varchar(100) NOT NULL,
+    Exercise_Advice varchar(100) NOT NULL,
+    Expert_name varchar(100) NOT NULL,
+    Health_tips varchar(100) NOT NULL,    
+    Primary Key (Advice_Id)
+);
+
+CREATE TABLE Updates( 
+    User_Id int, 
+    A_Record_id int, 
+    PRIMARY KEY (User_Id,A_Record_id), 
+    FOREIGN KEY (User_Id) REFERENCES users(User_Id) ON DELETE CASCADE On UPDATE CASCADE,
+    FOREIGN KEY (A_Record_id) REFERENCES Activity_Record(A_Record_id) ON DELETE CASCADE On UPDATE CASCADE); 
+
+CREATE TABLE recommended_to( 
+    User_Id int, 
+    workout_id int, 
+    PRIMARY KEY (User_Id,workout_id), 
+    FOREIGN KEY (User_Id) REFERENCES users(User_Id) ON DELETE CASCADE On UPDATE CASCADE,
+    FOREIGN KEY (workout_id) REFERENCES workout_plan(workout_id) ON DELETE CASCADE On UPDATE CASCADE); 
+
+CREATE TABLE given_to( 
+    User_Id int, 
+    Advice_id varchar(12), 
+    PRIMARY KEY (User_Id,Advice_id), 
+    FOREIGN KEY (User_Id) REFERENCES users(User_Id) ON DELETE CASCADE On UPDATE CASCADE,
+    FOREIGN KEY (Advice_id) REFERENCES expert_advice(Advice_id) ON DELETE CASCADE On UPDATE CASCADE);
+
+CREATE TABLE Based_on( 
+    A_record_Id int, 
+    Advice_id varchar(12), 
+    PRIMARY KEY (A_record_Id,Advice_id), 
+    FOREIGN KEY (A_record_Id) REFERENCES activity_record(A_record_Id) ON DELETE CASCADE On UPDATE CASCADE,
+    FOREIGN KEY (Advice_id) REFERENCES expert_advice(Advice_id) ON DELETE CASCADE On UPDATE CASCADE);
+
+
+ 

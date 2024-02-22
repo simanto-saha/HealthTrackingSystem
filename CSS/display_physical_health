@@ -1,0 +1,45 @@
+<?php
+// first of all, we need to connect to the database
+require_once('DBconnect.php');
+
+$sql = "SELECT * FROM physical_health";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    ?>
+
+    <html>
+        <head>
+        </head>
+        <body>
+
+        <table>
+            <tr>
+                
+                <th>Cholesterol</th>
+                <th>Blood pressure</th>
+                <th>Current</th>
+            </tr>
+
+            <?php
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    
+                    <td><?= $row['cholesterol'] ?></td>
+                    <td><?= $row['blood_presure'] ?></td>
+                    <td><?= $row['current'] ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+    <?php
+    } else {
+       # echo "No mental health records found";
+    }
+
+    $conn->close();
+    ?>
+</body>
+</html>
