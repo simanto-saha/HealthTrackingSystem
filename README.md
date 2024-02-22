@@ -1,6 +1,6 @@
 # Health Tracking System
 
-A Health Tracking System is a web application developed using PHP, HTML, MySQL, and CSS. It allows users to create personalized health profiles, track and analyze their daily physical activity, and receive curated and adaptable workout plans.
+A Health Tracking System is a web application developed using MySQL, HTML, PHP, and CSS. It allows users to create personalized health profiles, track and analyze their daily physical activity, and receive curated and adaptable workout plans.
 
 ## Features
 
